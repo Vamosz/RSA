@@ -6,10 +6,10 @@ public class ExtEuclidean {
             BigInteger Y,X;
 
     public  void EXTEuclidean(BigInteger a, BigInteger b) {
-        BigInteger firstrow[] = new BigInteger[40];
-        BigInteger secondrow[] = new BigInteger[40];
-        BigInteger thirdrow[] = new BigInteger[40];
-        BigInteger fourthrow[] = new BigInteger[40];
+        BigInteger firstrow[] = new BigInteger[100];
+        BigInteger secondrow[] = new BigInteger[100];
+        BigInteger thirdrow[] = new BigInteger[100];
+        BigInteger fourthrow[] = new BigInteger[100];
 
         firstrow[0] = a;
         firstrow[1] = b;
@@ -29,7 +29,7 @@ public class ExtEuclidean {
             i++;
         }
 
-        X = (BigInteger.ONE.negate()).pow(i - 1).multiply(fourthrow[i - 2]);
+        X = (BigInteger.ONE.negate()).pow(i - 2).multiply(fourthrow[i - 2]);
          Y = (BigInteger.ONE.negate()).pow(i - 1).multiply(fourthrow[i - 2]);
 
 

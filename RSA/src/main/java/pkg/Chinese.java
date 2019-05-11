@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.Key;
 
 public class Chinese {
-    public static long ChiReminder(KeyPair key, BigInteger C) {
+    public static BigInteger ChiReminder(KeyPair key, BigInteger C) {
 
         //1. step
         BigInteger c1, c2;
@@ -52,7 +52,7 @@ public class Chinese {
         }
 
 
-        return (((c1.multiply(y1).multiply(M1)).add(c2.multiply(y2).multiply(M2))).mod(M)).longValue();
+        return (((c1.multiply(y1).multiply(M1)).add(c2.multiply(y2).multiply(M2))).mod(M));
     }
 
 

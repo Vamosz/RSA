@@ -17,7 +17,7 @@ public class Encrypt {
 
         for (int i = 0; i < cryptic.length; i++) {
             cryptic[i]=BigInteger.valueOf(buffer[i]).modPow(key.e,key.n);
-            System.out.print(cryptic[i]+" ");
+            //System.out.print(cryptic[i]+" ");
         }
 
         return cryptic;
