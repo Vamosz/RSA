@@ -13,15 +13,15 @@ public class ExtEuclidean {
 
         firstrow[0] = a;
         firstrow[1] = b;
-        secondrow[0] = BigInteger.ZERO;
+        secondrow[0] = BigInteger.valueOf(0);
         secondrow[1] = a.divide(b);
-        thirdrow[0] = BigInteger.ONE;
-        thirdrow[1] = BigInteger.ZERO;
-        fourthrow[0] = BigInteger.ZERO;
-        fourthrow[1] = BigInteger.ONE;
+        thirdrow[0] = BigInteger.valueOf(1);
+        thirdrow[1] = BigInteger.valueOf(0);
+        fourthrow[0] = BigInteger.valueOf(0);
+        fourthrow[1] = BigInteger.valueOf(1);
 
         int i = 2;
-        while (!firstrow[i - 1].equals(BigInteger.ZERO)) {
+        while (!firstrow[i - 1].equals(BigInteger.valueOf(0))) {
             firstrow[i] = firstrow[i - 2].mod(firstrow[i - 1]);
             secondrow[i] = firstrow[i - 2].divide(firstrow[i - 1]);
             thirdrow[i] = (thirdrow[i - 1].multiply(secondrow[i - 1])).add(thirdrow[i - 2]);
@@ -29,8 +29,8 @@ public class ExtEuclidean {
             i++;
         }
 
-        X = (BigInteger.ONE.negate()).pow(i - 2).multiply(fourthrow[i - 2]);
-         Y = (BigInteger.ONE.negate()).pow(i - 1).multiply(fourthrow[i - 2]);
+        X = (BigInteger.valueOf(-1)).pow(i - 2).multiply(fourthrow[i - 2]);
+         Y = (BigInteger.valueOf(-1)).pow(i - 1).multiply(fourthrow[i - 2]);
 
 
     }

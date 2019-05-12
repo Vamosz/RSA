@@ -10,7 +10,7 @@ public class Encrypt {
 
         for (int i = 0; i < buffer.length; i++) {
             buffer[i]= (long) message.charAt(i);
-            System.out.print(buffer[i]+" ");
+            //System.out.print(buffer[i]+" ");
         }
 
         System.out.println();

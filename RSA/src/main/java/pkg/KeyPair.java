@@ -16,7 +16,7 @@ public class KeyPair {
             System.out.println("A p: "+p+"\nA q: "+q+"\nA phi_n: "+phi_n);
 
 
-            for(BigInteger i = BigInteger.TWO; i.compareTo(phi_n) < 0; i = i.add(BigInteger.ONE)) {
+            for(BigInteger i = BigInteger.valueOf(2); i.compareTo(phi_n) < 0; i = i.add(BigInteger.ONE)) {
                 if(Euclidean.Euclidean(phi_n,i).equals(BigInteger.ONE)) {
                     e = i;
                     break;
@@ -32,7 +32,9 @@ public class KeyPair {
 
             ExtEuclidean eu = new ExtEuclidean();
             eu.EXTEuclidean(phi_n,e);
-            if((eu.Y).compareTo(BigInteger.ZERO)==-1)
+            System.out.println("Y "+eu.Y);
+
+            if((eu.Y).compareTo(BigInteger.valueOf(0))<0)
                 d=phi_n.add(eu.Y);
             else
                 d=eu.Y;
@@ -41,7 +43,7 @@ public class KeyPair {
 
 
     public BigInteger KeyGeneration(){
-            int SizeOfBit = 100;
+            int SizeOfBit = 500;
         BigInteger key = new BigInteger(SizeOfBit, new java.util.Random());
         Boolean prime = false;
 
