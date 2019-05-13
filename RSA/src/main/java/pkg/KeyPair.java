@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class KeyPair {
 
-        BigInteger e,d,n,p,q;
+        BigInteger e,d,n,p,q,phi_n;
 
         public void PrimePair(){
 
@@ -12,8 +12,8 @@ public class KeyPair {
             q = KeyGeneration();
 
             n = p.multiply(q);
-            BigInteger phi_n=Euler.Euler(p,q);
-            System.out.println("A p: "+p+"\nA q: "+q+"\nA phi_n: "+phi_n);
+           phi_n=Euler.Euler(p,q);
+
 
 
             for(BigInteger i = BigInteger.valueOf(2); i.compareTo(phi_n) < 0; i = i.add(BigInteger.ONE)) {
@@ -23,8 +23,8 @@ public class KeyPair {
                 }
             }
 
-            BigInteger k =BigInteger.ONE;
-           /* while (!((BigInteger.ONE.add(k.multiply(phi_n)).mod(e)).equals(BigInteger.ZERO)) ){
+            /*BigInteger k =BigInteger.ONE;
+            while (!((BigInteger.ONE.add(k.multiply(phi_n)).mod(e)).equals(BigInteger.ZERO)) ){
                 d = BigInteger.ONE.add(k.multiply(phi_n)).divide(e);
                 //System.out.println(d);
                 k=k.add(BigInteger.ONE);
@@ -32,8 +32,6 @@ public class KeyPair {
 
             ExtEuclidean eu = new ExtEuclidean();
             eu.EXTEuclidean(phi_n,e);
-            System.out.println("Y "+eu.Y);
-
             if((eu.Y).compareTo(BigInteger.valueOf(0))<0)
                 d=phi_n.add(eu.Y);
             else
@@ -43,7 +41,7 @@ public class KeyPair {
 
 
     public BigInteger KeyGeneration(){
-            int SizeOfBit = 500;
+            int SizeOfBit = 200;
         BigInteger key = new BigInteger(SizeOfBit, new java.util.Random());
         Boolean prime = false;
 

@@ -17,7 +17,8 @@ class ExtEuclideanTest {
     @Test
     void EXTEuclidean() {
 
-        //euc.EXTEuclidean(BigInteger.valueOf(213160605290537443321700355577),437856621682617240993741139793);
-        //assertEquals(BigInteger.ONE ,euc.X);
+
+        euc.EXTEuclidean(BigInteger.valueOf(38808),BigInteger.valueOf(5));
+        assertEquals(BigInteger.valueOf(8) ,euc.yn);
     }
 }

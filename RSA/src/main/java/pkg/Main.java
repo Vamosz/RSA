@@ -10,15 +10,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         KeyPair keys = new KeyPair();
         keys.PrimePair();
-        //System.out.println("Az n: "+keys.n+"\nA d: "+keys.d+"\nAz e: "+keys.e);
+        System.out.println("Az n: "+keys.n+"\nA d: "+keys.d+"\nAz e: "+keys.e);
+
         System.out.print("Add meg a titkosítandó üzenetet: ");
         String message=sc.nextLine();
 
         System.out.println();
 
         BigInteger[] cryptic=Encrypt.Encryption(keys,message);
-        long[] message2= Decrypt.Decryption(keys,cryptic);
-        char[] messages= new char[message2.length];
+        String message2= Decrypt.Decryption(keys,cryptic);
+        //char[] messages= new char[message2.length];
 
         for (int i = 0; i < cryptic.length; i++) {
             System.out.print(cryptic[i]);
@@ -27,10 +28,12 @@ public class Main {
 
         System.out.println();
 
-        for (int i = 0; i < message2.length; i++) {
+        System.out.println(message2);
+
+        /*for (int i = 0; i < message2.length; i++) {
             messages[i]=(char) message2[i];
             System.out.print(messages[i]);
-        }
+        }*/
 
 
     }

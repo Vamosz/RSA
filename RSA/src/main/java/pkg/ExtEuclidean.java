@@ -3,13 +3,13 @@ package pkg;
 import java.math.BigInteger;
 
 public class ExtEuclidean {
-            BigInteger Y,X;
+            BigInteger Y,X,yn;
 
     public  void EXTEuclidean(BigInteger a, BigInteger b) {
-        BigInteger firstrow[] = new BigInteger[100];
-        BigInteger secondrow[] = new BigInteger[100];
-        BigInteger thirdrow[] = new BigInteger[100];
-        BigInteger fourthrow[] = new BigInteger[100];
+        BigInteger[] firstrow = new BigInteger[200];
+        BigInteger[] secondrow = new BigInteger[200];
+        BigInteger[] thirdrow = new BigInteger[200];
+        BigInteger[] fourthrow = new BigInteger[200];
 
         firstrow[0] = a;
         firstrow[1] = b;
@@ -23,14 +23,16 @@ public class ExtEuclidean {
         int i = 2;
         while (!firstrow[i - 1].equals(BigInteger.valueOf(0))) {
             firstrow[i] = firstrow[i - 2].mod(firstrow[i - 1]);
-            secondrow[i] = firstrow[i - 2].divide(firstrow[i - 1]);
+            if(firstrow[i].equals(BigInteger.valueOf(0)))
+                break;
+            secondrow[i] = firstrow[i - 1].divide(firstrow[i]);
             thirdrow[i] = (thirdrow[i - 1].multiply(secondrow[i - 1])).add(thirdrow[i - 2]);
             fourthrow[i] = (fourthrow[i - 1].multiply(secondrow[i - 1])).add(fourthrow[i - 2]);
             i++;
         }
-
-        X = (BigInteger.valueOf(-1)).pow(i - 2).multiply(fourthrow[i - 2]);
-         Y = (BigInteger.valueOf(-1)).pow(i - 1).multiply(fourthrow[i - 2]);
+        yn = fourthrow[i-1];
+        X = (BigInteger.valueOf(-1)).pow(i - 1).multiply(thirdrow[i - 1]);
+        Y = (BigInteger.valueOf(-1)).pow(i).multiply(fourthrow[i - 1]);
 
 
     }
